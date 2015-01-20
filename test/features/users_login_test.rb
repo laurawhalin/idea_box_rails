@@ -27,16 +27,6 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "registered user sees a list of their ideas" do
-    ApplicationController.any_instance.stubs(:current_user).returns(user)
-    idea = user.ideas.create(title: "Great Idea", description: "Grow tomatoes")
-    visit user_path(user)
-    within("#idea_list") do
-      assert page.has_content?("Great Idea")
-      assert page.has_content?("Grow tomatoes")
-    end
-  end
-
   test "user sees successful logout message when they log out" do
     ApplicationController.any_instance.stubs(:current_user).returns(user)
     visit user_path(user)

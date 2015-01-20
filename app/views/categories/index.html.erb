@@ -1,0 +1,5 @@
+<div id="categories">
+  <%= form_for(category) %>
+    <%= f.collection_select(:category_id, Category.all, :id, :name ) %>
+  <% end %>
+</div>
